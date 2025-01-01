@@ -19,3 +19,11 @@ export const loginSchema = z.object({
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;
+
+export const createProjectSchema = z.object({
+  projectName: requiredString,
+  projectLink: requiredString,
+  bio: requiredString
+});
+
+export type CreateProjectValues = z.infer<typeof createProjectSchema>;
