@@ -85,3 +85,24 @@ export async function UpdateProject(input: {
     console.error("Failed to update this project");
   }
 }
+
+export async function DeleteProject(projectId: string) {
+    const { user } = await validateRequest();
+  if (!user) throw Error("Unauthorized");
+
+  try {
+    const projectToDelete = await prisma.project.findUnique({
+        where: {id: projectId},
+    });
+
+    if (!projectToDelete) {
+        throw new Error("Project not found");
+    }
+
+    await prisma.project.delete({
+        where: { id: projectId},
+    });
+  } catch (error) {
+    console.error("Error deleting project")
+  }
+}
