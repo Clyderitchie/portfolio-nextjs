@@ -2,6 +2,7 @@
 
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
+import UpdateProject from "./UpdateProject";
 
 interface Project {
   id: string;
@@ -51,9 +52,11 @@ export default function ProjectList() {
                   Bio: {project.bio}
                 </h3>
               </div>
+              <UpdateProject projectId={project.id} projectName={project.projectName} projectLink={project.projectLink} bio={project.bio} />
             </li>
           ))}
         </ul>
+        
       </div>
     </>
   );
