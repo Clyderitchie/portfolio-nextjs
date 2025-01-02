@@ -34,3 +34,24 @@ export async function NewProject(input: {
     console.error("Failed to create new project: ", error);
   }
 }
+
+export async function FindAllProjects() {
+    const { user } = await validateRequest();
+    if (!user) throw Error("Unauthorized");
+
+    try {
+        const projects = await prisma.project.findMany({
+            select: {
+                id: true,
+                projectName: true,
+                projectLink: true,
+                bio: true,
+            },
+        });
+
+        console.log("Found all projects: ", projects);
+        return projects;
+    } catch (error) {
+        console.error("Error FindAllCustomers: ", error);
+    }
+}

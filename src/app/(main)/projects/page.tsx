@@ -1,30 +1,14 @@
 "use client";
 
-import CreateProject from "@/components/projects/CreateNewProject";
-import { useState } from "react";
+import ProjectList from "@/components/projects/ProjectList";
 
-export default function Projects(){
-    const [formData, setFormData] = useState({
-        projectName: "",
-        projectLink: "",
-        bio: "" 
-    })
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }))
-    }
-    return (
-        <>
-        {/* <h1>Projects Page</h1> */}
-        <CreateProject 
-        formData={formData}
-        handleChange={handleChange}
-        isSubmitting={false}
-        setIsSubmitting={() => {}}/>
-        </>
-    )
+export default function Projects() {
+ 
+  return (
+    <>
+      <div className="max-h-full min-h-screen min-w-full max-w-full p-3">
+        <ProjectList />
+      </div>
+    </>
+  );
 }
