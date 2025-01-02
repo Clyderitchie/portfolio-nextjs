@@ -3,6 +3,7 @@
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
 import UpdateProject from "./UpdateProject";
+import ProjectDelete from "./DeletePRoject";
 
 interface Project {
   id: string;
@@ -53,6 +54,7 @@ export default function ProjectList() {
                 </h3>
               </div>
               <UpdateProject projectId={project.id} projectName={project.projectName} projectLink={project.projectLink} bio={project.bio} />
+              <ProjectDelete projectId={project.id} />
             </li>
           ))}
         </ul>
