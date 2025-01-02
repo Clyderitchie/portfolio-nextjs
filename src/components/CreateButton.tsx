@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useSession } from "@/app/(main)/SessionProvider";
 import { Button } from "@/components/ui/button";
-import { UserRoundPlus } from "lucide-react";
+import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 
 interface CreateButtonProps {
@@ -19,7 +19,7 @@ export default function CreateButton({ className }: CreateButtonProps) {
     <>
       <Button variant="ghost" className="" title="Home">
         <Link href="/create">
-          <UserRoundPlus />
+          <CirclePlus />
         </Link>
       </Button>
     </>

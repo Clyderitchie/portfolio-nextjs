@@ -1,10 +1,14 @@
 "use client";
 
-export default function Projects(){
+import ProjectList from "@/components/projects/ProjectList";
 
-    return (
-        <>
-        <h1>Projects Page</h1>
-        </>
-    )
+export default function Projects() {
+ 
+  return (
+    <>
+      <div className="max-h-full min-h-screen min-w-full max-w-full p-3">
+        <ProjectList />
+      </div>
+    </>
+  );
 }
