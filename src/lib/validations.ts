@@ -27,3 +27,12 @@ export const createProjectSchema = z.object({
 });
 
 export type CreateProjectValues = z.infer<typeof createProjectSchema>;
+
+export const updateProjectSchema = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  projectLink: z.string(),
+  bio: z.string(),
+});
+
+export type UpdateProjectValues = z.infer<typeof updateProjectSchema>;

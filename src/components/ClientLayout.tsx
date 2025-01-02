@@ -22,7 +22,7 @@ export default function ClientLayout({
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
+      <Navbar  />
       <div className="mx-auto flex w-full max-w-7xl grow items-center justify-center gap-5 p-5">
         {children}
       </div>

@@ -2,7 +2,8 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { createProjectSchema } from "@/lib/validations";
+import { Project } from "@prisma/client";
+import { createProjectSchema, updateProjectSchema } from "@/lib/validations";
 
 export async function NewProject(input: {
   projectName: string;
@@ -35,23 +36,52 @@ export async function NewProject(input: {
   }
 }
 
-export async function FindAllProjects() {
-    const { user } = await validateRequest();
-    if (!user) throw Error("Unauthorized");
+export async function FindAllProjects(): Promise<Project[]> {
+  const { user } = await validateRequest();
+  if (!user) throw Error("Unauthorized");
 
-    try {
-        const projects = await prisma.project.findMany({
-            select: {
-                id: true,
-                projectName: true,
-                projectLink: true,
-                bio: true,
-            },
-        });
+  try {
+    const projects = await prisma.project.findMany({
+      select: {
+        id: true,
+        projectName: true,
+        projectLink: true,
+        bio: true,
+        createdAt: true,
+      },
+    });
 
-        console.log("Found all projects: ", projects);
-        return projects;
-    } catch (error) {
-        console.error("Error FindAllCustomers: ", error);
-    }
+    console.log("Found all projects: ", projects);
+    return projects;
+  } catch (error) {
+    console.error("Error FindAllCustomers: ", error);
+    return [];
+  }
+}
+
+export async function UpdateProject(input: {
+  projectId: string;
+  projectName: string;
+  projectLink: string;
+  bio: string;
+}){
+  const { user } = await validateRequest();
+  if (!user) throw Error("Unauthorized");
+
+  try {
+    const validatedData = updateProjectSchema.parse(input);
+
+    const updateProject = await prisma.project.update({
+      where: { id: validatedData.projectId },
+      data: {
+        projectName: validatedData.projectName,
+        projectLink: validatedData.projectLink,
+        bio: validatedData.bio,
+      },
+    });
+    console.log("Updated the project");
+    return updateProject;
+  } catch (error) {
+    console.error("Failed to update this project");
+  }
 }
