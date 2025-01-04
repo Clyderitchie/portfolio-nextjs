@@ -5,7 +5,7 @@ export const userDataSelect = {
   username: true,
 } satisfies Prisma.UserSelect;
 
-export function getUserDataSelect(loggedInUserId: string) {
+export function getUserDataSelect(loggedInUserId: true) {
   return {
     id: true,
     username: true,
@@ -15,4 +15,18 @@ export function getUserDataSelect(loggedInUserId: string) {
 
 export type UserData = Prisma.UserGetPayload<{
   select: ReturnType<typeof getUserDataSelect>;
+}>;
+
+export function getProjectDataSelect() {
+  return {
+    id: true,
+    projectName: true,
+    projectLink: true,
+    githubLink: true,
+    bio: true,
+  } satisfies Prisma.ProjectSelect;
+}
+
+export type ProjectData = Prisma.ProjectGetPayload<{
+  select: ReturnType<typeof getProjectDataSelect>;
 }>;

@@ -10,6 +10,7 @@ interface UpdateProjectProps {
   projectId: string;
   projectName: string;
   projectLink: string;
+  githubLink: string;
   bio: string;
 }
 
@@ -18,12 +19,14 @@ export default function UpdateProject({
   projectId,
   projectName,
   projectLink,
+  githubLink,
   bio,
 }: UpdateProjectProps) {
   const [formData, setFormData] = useState({
     projectId,
     projectName,
     projectLink,
+    githubLink,
     bio,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,6 +43,7 @@ export default function UpdateProject({
       projectId: formData.projectId,
       projectName: formData.projectName,
       projectLink: formData.projectLink,
+      githubLink: formData.githubLink,
       bio: formData.bio,
     };
 

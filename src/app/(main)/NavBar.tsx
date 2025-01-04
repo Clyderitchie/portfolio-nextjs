@@ -7,6 +7,7 @@ export default function Navbar() {
     const [formData, setFormData] = useState({
       projectName: "",
       projectLink: "",
+      githubLink: "",
       bio: "",
     });
   
