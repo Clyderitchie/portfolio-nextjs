@@ -4,11 +4,13 @@ import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { Project } from "@prisma/client";
 import { createProjectSchema, updateProjectSchema } from "@/lib/validations";
+import { getProjectDataSelect, ProjectData } from "@/lib/types";
 
 export async function NewProject(input: {
   projectName: string;
   projectLink: string;
   bio: string;
+  githubLink: string;
 }) {
   const { user } = await validateRequest();
 
@@ -16,12 +18,13 @@ export async function NewProject(input: {
 
   try {
     const parsedData = createProjectSchema.parse(input);
-    const { projectName, projectLink, bio } = parsedData;
+    const { projectName, projectLink, bio, githubLink } = parsedData;
 
     const projectData = {
       projectName,
       projectLink,
       bio,
+      githubLink,
       createdAt: new Date(),
     };
 
@@ -36,19 +39,13 @@ export async function NewProject(input: {
   }
 }
 
-export async function FindAllProjects(): Promise<Project[]> {
+export async function FindAllProjects(): Promise<ProjectData[]> {
   const { user } = await validateRequest();
   if (!user) throw Error("Unauthorized");
 
   try {
     const projects = await prisma.project.findMany({
-      select: {
-        id: true,
-        projectName: true,
-        projectLink: true,
-        bio: true,
-        createdAt: true,
-      },
+     select: getProjectDataSelect(),
     });
 
     console.log("Found all projects: ", projects);
@@ -63,8 +60,9 @@ export async function UpdateProject(input: {
   projectId: string;
   projectName: string;
   projectLink: string;
+  githubLink: string;
   bio: string;
-}){
+}) {
   const { user } = await validateRequest();
   if (!user) throw Error("Unauthorized");
 
@@ -87,22 +85,22 @@ export async function UpdateProject(input: {
 }
 
 export async function DeleteProject(projectId: string) {
-    const { user } = await validateRequest();
+  const { user } = await validateRequest();
   if (!user) throw Error("Unauthorized");
 
   try {
     const projectToDelete = await prisma.project.findUnique({
-        where: {id: projectId},
+      where: { id: projectId },
     });
 
     if (!projectToDelete) {
-        throw new Error("Project not found");
+      throw new Error("Project not found");
     }
 
     await prisma.project.delete({
-        where: { id: projectId},
+      where: { id: projectId },
     });
   } catch (error) {
-    console.error("Error deleting project")
+    console.error("Error deleting project");
   }
 }

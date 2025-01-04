@@ -15,6 +15,7 @@ interface CreateNewProjectProps {
     projectName: string;
     projectLink: string;
     bio: string;
+    githubLink: string;
   };
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isSubmitting: boolean;
@@ -39,6 +40,7 @@ export default function CreateProject({
       projectName: formData.projectName,
       projectLink: formData.projectLink,
       bio: formData.bio,
+      githubLink: formData.githubLink
     };
 
     try {
@@ -81,6 +83,13 @@ export default function CreateProject({
                 onChange={handleChange}
                 className="my-7 min-w-full"
               />
+               <Input
+                name="githubLink"
+                placeholder="GitHub Link"
+                value={formData.githubLink}
+                onChange={handleChange}
+                className="my-7 min-w-full"
+              />
               <Input
                 name="bio"
                 placeholder="bio"
@@ -89,14 +98,14 @@ export default function CreateProject({
                 className="my-7 min-w-full"
               />
             </div>
-            <button
+            <Button
               type="button"
               className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
               onClick={handleSubmit}
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
+            </Button>
             <div className="mt-4 flex justify-end space-x-2">
               <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
                 Cancel

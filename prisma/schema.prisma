@@ -39,6 +39,7 @@ model Project {
   id          String   @id() @default(cuid())
   projectName String
   projectLink String
+  githubLink  String
   bio         String
   createdAt   DateTime @default(now())
 

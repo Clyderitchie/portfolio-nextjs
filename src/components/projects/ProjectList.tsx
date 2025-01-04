@@ -3,18 +3,22 @@
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
 import UpdateProject from "./UpdateProject";
-import ProjectDelete from "./DeletePRoject";
+import ProjectDelete from "./DeleteProject";
+import Link from "next/link";
+import { Github, Link2 } from "lucide-react";
+import { ProjectData } from "@/lib/types";
 
 interface Project {
   id: string;
   projectName: string;
   projectLink: string;
+  githubLink: string;
   bio: string;
   createdAt: Date;
 }
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectData[]>([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -39,26 +43,49 @@ export default function ProjectList() {
         <ul>
           {filteredProjects.map((project) => (
             <li
-              className="my-1 rounded-md bg-card p-1 shadow-xl"
-              key={project.id}
-            >
-              <div className="flex flex-col">
-                <h1 className="my-2 text-center font-bold">
-                  Name: {project.projectName}
+            className="m-10 my-1 rounded-sm bg-card p-1 shadow-2xl"
+            key={project.id}
+          >
+            <div className="flex flex-col">
+              <div>
+                <h1 className="my-2 py-2 text-center font-bold">
+                  <strong className="py-2 text-3xl">
+                    {project.projectName}
+                  </strong>
                 </h1>
-                <h2 className="my-2 text-center font-bold">
-                  Link: {project.projectLink}
-                </h2>
-                <h3 className="my-2 text-center font-bold">
-                  Bio: {project.bio}
-                </h3>
               </div>
-              <UpdateProject projectId={project.id} projectName={project.projectName} projectLink={project.projectLink} bio={project.bio} />
+              <h3 className="my-2 text-center font-bold">{project.bio}</h3>
+            </div>
+
+            <div className="py-2 flex justify-around px-5">
+              <Link
+                href={project.projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center"
+              >
+                <Link2 />
+              </Link>
+              <Link
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center"
+              >
+                <Github />
+              </Link>
+              <UpdateProject
+                projectId={project.id}
+                projectName={project.projectName}
+                projectLink={project.projectLink}
+                githubLink={project.githubLink}
+                bio={project.bio}
+              />
               <ProjectDelete projectId={project.id} />
-            </li>
+            </div>
+          </li>
           ))}
         </ul>
-        
       </div>
     </>
   );

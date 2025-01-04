@@ -23,7 +23,8 @@ export type LoginValues = z.infer<typeof loginSchema>;
 export const createProjectSchema = z.object({
   projectName: requiredString,
   projectLink: requiredString,
-  bio: requiredString
+  bio: requiredString,
+  githubLink: requiredString,
 });
 
 export type CreateProjectValues = z.infer<typeof createProjectSchema>;
@@ -33,6 +34,7 @@ export const updateProjectSchema = z.object({
   projectName: z.string(),
   projectLink: z.string(),
   bio: z.string(),
+  githubLink: z.string(),
 });
 
 export type UpdateProjectValues = z.infer<typeof updateProjectSchema>;
