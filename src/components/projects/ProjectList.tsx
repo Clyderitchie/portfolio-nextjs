@@ -8,14 +8,14 @@ import Link from "next/link";
 import { Github, Link2 } from "lucide-react";
 import { ProjectData } from "@/lib/types";
 
-interface Project {
-  id: string;
-  projectName: string;
-  projectLink: string;
-  githubLink: string;
-  bio: string;
-  createdAt: Date;
-}
+// interface Project {
+//   id: string;
+//   projectName: string;
+//   projectLink: string;
+//   githubLink: string;
+//   bio: string;
+//   createdAt: Date;
+// }
 
 export default function ProjectList() {
   const [projects, setProjects] = useState<ProjectData[]>([]);
