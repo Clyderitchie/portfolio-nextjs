@@ -15,13 +15,10 @@ export default function NavMenu({ className }: NavMenuProps) {
 
   return (
     <>
-      <div className="bottom-0 right-0 fixed px-10 py-3">
+      <div className="fixed bottom-0 right-0 px-10 py-3">
         <div className="flex-col items-center">
           <Link href="/projects">
             <h3 className="py-5">Projects</h3>
-          </Link>
-          <Link href="/apps">
-            <h3 className="py-5">Apps</h3>
           </Link>
           <Link href="/resume">
             <h3 className="py-5">Resume</h3>
