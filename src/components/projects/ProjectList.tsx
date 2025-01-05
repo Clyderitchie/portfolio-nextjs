@@ -7,6 +7,12 @@ import ProjectDelete from "./DeleteProject";
 import Link from "next/link";
 import { Github, Link2 } from "lucide-react";
 import { ProjectData } from "@/lib/types";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
 
 export default function ProjectList() {
   const [projects, setProjects] = useState<ProjectData[]>([]);
@@ -30,54 +36,66 @@ export default function ProjectList() {
 
   return (
     <>
-      <div className="max-h-full min-h-full">
-        <ul>
-          {filteredProjects.map((project) => (
-            <li
-            className="m-10 my-1 rounded-sm bg-card p-1 shadow-2xl"
-            key={project.id}
-          >
-            <div className="flex flex-col">
-              <div>
-                <h1 className="my-2 py-2 text-center font-bold">
-                  <strong className="py-2 text-3xl">
-                    {project.projectName}
-                  </strong>
-                </h1>
-              </div>
-              <h3 className="my-2 text-center font-bold">{project.bio}</h3>
-            </div>
+      <TooltipProvider>
+        <div className="max-h-full min-h-full">
+          <ul>
+            {filteredProjects.map((project) => (
+              <li
+                className="m-10 my-1 rounded-sm bg-card p-1 shadow-2xl"
+                key={project.id}
+              >
+                <div className="flex flex-col">
+                  <div>
+                    <h1 className="my-2 py-2 text-center font-bold">
+                      <strong className="py-2 text-3xl">
+                        {project.projectName}
+                      </strong>
+                    </h1>
+                  </div>
+                  <h3 className="my-2 text-center font-bold">{project.bio}</h3>
+                </div>
 
-            <div className="py-2 flex justify-around px-5">
-              <Link
-                href={project.projectLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center"
-              >
-                <Link2 />
-              </Link>
-              <Link
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center"
-              >
-                <Github />
-              </Link>
-              <UpdateProject
-                projectId={project.id}
-                projectName={project.projectName}
-                projectLink={project.projectLink}
-                githubLink={project.githubLink}
-                bio={project.bio}
-              />
-              <ProjectDelete projectId={project.id} />
-            </div>
-          </li>
-          ))}
-        </ul>
-      </div>
+                <div className="flex justify-around px-5 py-2">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={project.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-center"
+                      >
+                        <Link2 />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>Project Link</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-center"
+                      >
+                        <Github />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>Project Link</TooltipContent>
+                  </Tooltip>
+                  <UpdateProject
+                    projectId={project.id}
+                    projectName={project.projectName}
+                    projectLink={project.projectLink}
+                    githubLink={project.githubLink}
+                    bio={project.bio}
+                  />
+                  <ProjectDelete projectId={project.id} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </TooltipProvider>
     </>
   );
 }
