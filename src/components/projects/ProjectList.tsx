@@ -1,5 +1,9 @@
 "use client";
-
+// TODO: Make editing/deleting only show if logged in
+// TODO: Make homepage apps landing page and login a option only
+// TODO: Figure out the homepage layout BE CREATIVE
+// TODO: Finish readme file
+// TODO: Deploy with domain
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
 import UpdateProject from "./UpdateProject";
@@ -13,6 +17,8 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "@/components/ui/tooltip";
+import { validateRequest } from "@/auth";
+import MenuButton from "../MenuButton";
 
 export default function ProjectList() {
   const [projects, setProjects] = useState<ProjectData[]>([]);
@@ -80,16 +86,23 @@ export default function ProjectList() {
                         <Github />
                       </Link>
                     </TooltipTrigger>
-                    <TooltipContent>Project Link</TooltipContent>
+                    <TooltipContent>GitHub Link</TooltipContent>
                   </Tooltip>
-                  <UpdateProject
+                  <MenuButton
                     projectId={project.id}
                     projectName={project.projectName}
                     projectLink={project.projectLink}
                     githubLink={project.githubLink}
                     bio={project.bio}
                   />
-                  <ProjectDelete projectId={project.id} />
+                  {/* <UpdateProject
+                    projectId={project.id}
+                    projectName={project.projectName}
+                    projectLink={project.projectLink}
+                    githubLink={project.githubLink}
+                    bio={project.bio}
+                  />
+                  <ProjectDelete projectId={project.id} /> */}
                 </div>
               </li>
             ))}

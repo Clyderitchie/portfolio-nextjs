@@ -58,8 +58,8 @@ export default function UpdateProject({
 
   return (
     <>
-      <Pencil className={className} onClick={() => setIsModalOpen(true)} />
-
+    <Pencil className={className} onClick={() => setIsModalOpen(true)} />
+   
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="w-96 rounded-lg bg-white p-6 shadow-lg">
@@ -72,7 +72,7 @@ export default function UpdateProject({
                   name="projectName"
                   value={formData.projectName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 p-2"
+                  className="w-full border border-gray-300 p-2 text-black"
                 />
               </div>
               <div className="my-2">
@@ -82,7 +82,17 @@ export default function UpdateProject({
                   name="projectLink"
                   value={formData.projectLink}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 p-2"
+                  className="w-full border border-gray-300 p-2 text-black"
+                />
+              </div>
+              <div className="my-2">
+                <label className="block text-black">GitHub Link</label>
+                <input
+                  type="text"
+                  name="githubLink"
+                  value={formData.githubLink}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 p-2 text-black"
                 />
               </div>
               <div className="my-2">
@@ -92,7 +102,7 @@ export default function UpdateProject({
                   name="bio"
                   value={formData.bio}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 p-2"
+                  className="w-full border border-gray-300 p-2 text-black"
                 />
               </div>
               <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
