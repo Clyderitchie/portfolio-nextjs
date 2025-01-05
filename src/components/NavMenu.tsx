@@ -20,6 +20,9 @@ export default function NavMenu({ className }: NavMenuProps) {
           <Link href="/projects">
             <h3 className="py-5">Projects</h3>
           </Link>
+          <Link href="/about">
+            <h3 className="py-5">About</h3>
+          </Link>
           <Link href="/resume">
             <h3 className="py-5">Resume</h3>
           </Link>

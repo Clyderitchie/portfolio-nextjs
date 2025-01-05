@@ -1,27 +1,48 @@
 "use client";
 
+import { Tooltip, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { GithubIcon, LinkedinIcon, Mail, MapPinIcon, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function Resume() {
   return (
     <>
-      <div className="max-h-full min-h-screen min-w-full max-w-full p-3">
+    <TooltipProvider>
+    <div className="max-h-full min-h-screen min-w-full max-w-full p-3">
         <div className="m-10">
           <div className="my-5">
             <div className="flex justify-center">
               <h1 className="text-center text-3xl font-bold">Clyde Ritchie</h1>
             </div>
             <div className="m-1 flex justify-between px-3 py-5">
-              <Link href="mailto:Clyderitchie@yahoo.com">
-                <Mail />
-              </Link>
-              <Link href="https://github.com/Clyderitchie" target="_blank">
-                <GithubIcon />
-              </Link>
-              <Link href="https://www.linkedin.com/in/clyde-ritchie-536a12219/" target="_blank">
-                <LinkedinIcon />
-              </Link>
+            <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link href="mailto:Clyderitchie@yahoo.com">
+                      <Mail />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>Send an Email</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link href="https://github.com/Clyderitchie" target="_blank">
+                      <GithubIcon />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>GitHub Profile</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href="https://www.linkedin.com/in/clyde-ritchie-536a12219/"
+                      target="_blank"
+                    >
+                      <LinkedinIcon />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>LinkedIn Profile</TooltipContent>
+                </Tooltip>
             </div>
           </div>
           <div className="my-5">
@@ -80,6 +101,8 @@ export default function Resume() {
           </div>
         </div>
       </div>
+    </TooltipProvider>
+      
     </>
   );
 }
