@@ -4,7 +4,7 @@
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
 import UpdateProject from "./UpdateProject";
-import ProjectDelete from "./DeleteProject";
+import DeleteProject from "./DeleteProject";
 import Link from "next/link";
 import { Github, Link2 } from "lucide-react";
 import { ProjectData } from "@/lib/types";

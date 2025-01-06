@@ -40,7 +40,7 @@ export async function NewProject(input: {
 }
 
 export async function FindAllProjects(): Promise<ProjectData[]> {
-    
+
   try {
     const projects = await prisma.project.findMany({
      select: getProjectDataSelect(),
@@ -82,7 +82,7 @@ export async function UpdateProject(input: {
   }
 }
 
-export async function DeleteProject(projectId: string) {
+export async function DeleteProjectAction(projectId: string) {
   const { user } = await validateRequest();
   if (!user) throw Error("Unauthorized");
 
