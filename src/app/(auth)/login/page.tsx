@@ -3,7 +3,7 @@
 
 import { Metadata } from "next";
 import LoginForm from "./LoginForm";
-import Link from "next/link";
+
 
 
 export const metadata: Metadata = {
@@ -20,9 +20,6 @@ export default function Page() {
         </h1>
         <div className="space-y-5">
           <LoginForm />
-          <Link href="/signup" className="block text-center hover:underline">
-            Don&apos;t have an account Sign up
-          </Link>
         </div>
       </div>
      
