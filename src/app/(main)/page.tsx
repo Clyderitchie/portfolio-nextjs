@@ -17,7 +17,7 @@ export default function HomePage() {
           <h1 className="text-center text-3xl">
             Welcome! Dive in and explore a world of innovative projects, coding
             adventures, and the passion that fuels Clyde's journey in the tech
-            realm. 😊
+            realm.
           </h1>
         </div>
       </main>
