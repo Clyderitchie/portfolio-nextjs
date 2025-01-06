@@ -4,7 +4,6 @@ import { NewProject } from "@/app/(main)/projects/actions";
 import { useSession } from "@/app/(main)/SessionProvider";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
-import CreateButton from "../CreateButton";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { CirclePlus } from "lucide-react";
