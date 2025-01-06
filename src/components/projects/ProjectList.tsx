@@ -1,10 +1,7 @@
 "use client";
-// TODO: Finish readme file
-// TODO: Deploy with domain
+
 import { FindAllProjects } from "@/app/(main)/projects/actions";
 import { useEffect, useState } from "react";
-import UpdateProject from "./UpdateProject";
-import DeleteProject from "./DeleteProject";
 import Link from "next/link";
 import { Github, Link2 } from "lucide-react";
 import { ProjectData } from "@/lib/types";
