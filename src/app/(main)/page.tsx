@@ -14,7 +14,11 @@ export default function HomePage() {
     <>
       <main className="flex h-full w-full min-w-0 gap-5">
         <div className={`w-full min-w-0 space-y-5 ${fadeIn ? "fade-in" : ""}`}>
-          <h1 className="text-center text-3xl">Hello World!</h1>
+          <h1 className="text-center text-3xl">
+            Welcome! Dive in and explore a world of innovative projects, coding
+            adventures, and the passion that fuels Clyde's journey in the tech
+            realm. 😊
+          </h1>
         </div>
       </main>
       <style jsx>{`
