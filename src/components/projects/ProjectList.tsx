@@ -1,6 +1,4 @@
 "use client";
-// TODO: Make editing/deleting only show if logged in
-// TODO: Make homepage apps landing page and login a option only
 // TODO: Figure out the homepage layout BE CREATIVE
 // TODO: Finish readme file
 // TODO: Deploy with domain

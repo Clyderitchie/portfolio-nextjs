@@ -40,9 +40,7 @@ export async function NewProject(input: {
 }
 
 export async function FindAllProjects(): Promise<ProjectData[]> {
-//   const { user } = await validateRequest();
-//   if (!user) throw Error("Unauthorized");
-
+    
   try {
     const projects = await prisma.project.findMany({
      select: getProjectDataSelect(),
