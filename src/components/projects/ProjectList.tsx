@@ -1,5 +1,4 @@
 "use client";
-// TODO: Figure out the homepage layout BE CREATIVE
 // TODO: Finish readme file
 // TODO: Deploy with domain
 import { FindAllProjects } from "@/app/(main)/projects/actions";
