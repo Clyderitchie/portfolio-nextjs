@@ -56,7 +56,7 @@ export default function UserButton({ className }: UserButtonProps) {
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                  {/* <DropdownMenuItem onClick={() => setTheme("system")}>
                     <Monitor className="mr-2 size-4" /> System default
                     {theme === "system" && <Check className="ms-2 size-4" />}
                   </DropdownMenuItem>
@@ -67,7 +67,7 @@ export default function UserButton({ className }: UserButtonProps) {
                   <DropdownMenuItem onClick={() => setTheme("dark")}>
                     <Moon className="mr-2 size-4" /> Dark
                     {theme === "dark" && <Check className="ms-2 size-4" />}
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
