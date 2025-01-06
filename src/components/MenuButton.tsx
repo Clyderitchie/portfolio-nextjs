@@ -5,8 +5,8 @@ import { useTheme } from "next-themes";
 import { Ellipsis } from "lucide-react";
 import { useState } from "react";
 import UpdateProject from "./projects/UpdateProject";
-import DeleteProject from "./projects/DeleteProject";
-// import ProjectDelete from "./projects/DeleteProject";
+// import DeleteProject from "./projects/DeleteProject";
+
 
 interface MenuButtonProps {
   className?: string;
@@ -50,7 +50,7 @@ export default function MenuButton({
             projectLink={""}
             bio={""}
           />
-          <DeleteProject projectId={projectId} />
+          {/* <DeleteProject projectId={projectId} /> */}
         </div>
       )}
     </div>
